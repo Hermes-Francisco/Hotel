@@ -7,7 +7,7 @@ class App{
 	constructor(){
 		this.app = express();
 		
-		mongoose.connect('mongodb+srv://WebHotel2020:<password>@trabalhoweb-hotel-rwlha.mongodb.net/test?retryWrites=true&w=majority',{
+		mongoose.connect('mongodb+srv://WebHotel2020:98308465@trabalhoweb-hotel-rwlha.mongodb.net/test?retryWrites=true&w=majority',{
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
 		});

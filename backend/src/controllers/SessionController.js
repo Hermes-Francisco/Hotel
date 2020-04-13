@@ -2,9 +2,11 @@ import Usuario from '../models/Usuario';
 
 class SessionController{
 	
+	index(req, res){return res.json({resposta: false})}
+	
 	async store(req, res){
 		const { email } = req.body;
-		//return res.status(300).json(email);
+		return res.status(200).json(email);
 		
 		let usuario = await Usuario.findOne({email});
 		
