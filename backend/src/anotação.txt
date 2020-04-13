@@ -1,0 +1,25 @@
+pacotes sucrase: utilizar para adotar nova sintaxe de importação (import x from 'y');
+
+nodemon: reinicia o "servidor" sempre que detecta uma mudança em um arquivo
+
+
+yarn add sucrase nodemon -D
+
+depois testar:
+yarn sucrase-node ./src/server.js
+
+e editar o arquivo package.json e incluir
+
+"scripts"{
+	"dev": "nodemon src/server.js"
+  },
+
+
+-> configurar para que sempre que o nodemon seja executado, ele execute o sucrase.
+
+criar um arquivo nodemon.json
+{
+	"execMap": {
+		"js": "node -r sucrase/register"	
+	}
+}
