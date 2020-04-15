@@ -10,6 +10,8 @@ routes.get('/', (req, res)=> {
 
 routes.post('/sessions', SessionController.store);
 
+routes.post('/hotel', SessionController.storeHotel);
+
 routes.get('/sessions', SessionController.index);
 
 export default routes;
