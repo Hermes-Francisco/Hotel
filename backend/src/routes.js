@@ -14,6 +14,10 @@ routes.post('/sessions', SessionController.store);
 
 routes.post('/hoteis', HotelController.store);
 
+routes.get('/hoteis', HotelController.index);
+
+routes.put('/hoteis', HotelController.update);
+
 routes.get('/sessions', SessionController.index);
 
 export default routes;
