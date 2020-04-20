@@ -8,7 +8,7 @@ class HotelController{
 		
 	async store(req, res){
 		
-		const { nome, uf, municipio, endereco, nApartamentos, valorDiaria } = req.body;
+		const { nome, uf, municipio, endereco, nAptos, valorDiaria } = req.body;
 		
 		let hotel = await Hotel.findOne({nome});
 		
@@ -18,7 +18,7 @@ class HotelController{
 				"uf":uf,
 				"municipio":municipio,
 				"endereco":endereco,
-				"nApartamentos":nApartamentos,
+				"nAptos":nAptos,
 				"valorDiaria":valorDiaria,
 			});
 			return res.status(200).json(hotel);

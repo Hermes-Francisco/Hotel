@@ -5,7 +5,7 @@ const HotelSchema = new Schema({
 	uf: String,
 	municipio: String,
 	endereco: String,
-	nApartamentos: Number,
+	nAptos: Number,
 	valorDiaria: Number,
 });
 
