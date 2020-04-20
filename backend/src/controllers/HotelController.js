@@ -1,15 +1,14 @@
 import Hotel from '../models/Hotel';
 
-class AdministracaoController{
+class HotelController{
 	
-	async storeHotel(req, res){
+	index(req, res){
+		return res.json({resposta: false})
+		}
 		
-		const { nome } = req.body;
-		const { uf } = req.body;
-		const { municipio } = req.body;
-		const { endereco } = req.body;
-		const { nApartamentos } = req.body;
-		const { valorDiaria } = req.body;
+	async store(req, res){
+		
+		const { nome, uf, municipio, endereco, nApartamentos, valorDiaria } = req.body;
 		
 		let hotel = await Hotel.findOne({nome});
 		
@@ -29,4 +28,4 @@ class AdministracaoController{
 	}
 
 }
-export default new AdministracaoController;
+export default new HotelController;
