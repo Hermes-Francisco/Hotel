@@ -1,13 +1,15 @@
 import Hotel from '../models/Hotel';
 
-class HotelController{
+class AdministracaoController{
 	
-	async store(req, res){
+	async storeHotel(req, res){
 		
 		const { nome } = req.body;
 		const { uf } = req.body;
 		const { municipio } = req.body;
 		const { endereco } = req.body;
+		const { nApartamentos } = req.body;
+		const { valorDiaria } = req.body;
 		
 		let hotel = await Hotel.findOne({nome});
 		
@@ -17,6 +19,8 @@ class HotelController{
 				"uf":uf,
 				"municipio":municipio,
 				"endereco":endereco,
+				"nApartamentos":nApartamentos,
+				"valorDiaria":valorDiaria,
 			});
 			return res.status(200).json(hotel);
 		}
@@ -25,4 +29,4 @@ class HotelController{
 	}
 
 }
-export default new HotelController;
+export default new AdministracaoController;

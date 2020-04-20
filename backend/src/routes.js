@@ -2,7 +2,7 @@ import { Router } from 'express';//const { Router } = require('express');
 
 import SessionController from './controllers/SessionController';
 
-import HotelController from './controllers/HotelController';
+import AdministracaoController from './controllers/AdministracaoController';
 
 const routes = new Router();
 
@@ -12,7 +12,7 @@ routes.get('/', (req, res)=> {
 
 routes.post('/sessions', SessionController.store);
 
-routes.post('/hotel', HotelController.store);
+routes.post('/hotel', AdministracaoController.storeHotel);
 
 routes.get('/sessions', SessionController.index);
 

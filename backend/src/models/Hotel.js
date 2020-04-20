@@ -5,6 +5,8 @@ const HotelSchema = new Schema({
 	uf: String,
 	municipio: String,
 	endereco: String,
+	nApartamentos: Number,
+	valorDiaria: Number,
 });
 
 export default model('Hotel', HotelSchema);

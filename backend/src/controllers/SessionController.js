@@ -1,5 +1,4 @@
 import Usuario from '../models/Usuario';
-import Hotel from '../models/Hotel';
 
 class SessionController{
 	
