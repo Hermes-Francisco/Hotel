@@ -4,11 +4,24 @@ class HotelController{
 	
 	async index(req, res){ //recuperar lista
 	
-		const { municipio } = req.body;
+		const { municipio } = req.params;
 		
 		let Hoteis = await Hotel.find({ municipio })
 		
 		return res.json({Hoteis})
+	}
+	
+	async show(req, res){
+		
+		const { nome } = req.params;
+		
+		let hotel = await Hotel.findOne({nome});
+		
+		if(hotel){
+			return res.status(200).json(hotel);
+		}
+		return res.status(404).json({erro:"Hotel n?o encontrado"})	
+		
 	}
 		
 	async store(req, res){
@@ -29,7 +42,7 @@ class HotelController{
 			return res.status(200).json(hotel);
 		}
 		
-		return res.status(400).json({erro:"hotel já cadastrado"});
+		return res.status(400).json({erro:"hotel j? cadastrado"});
 	}
 	
 	async update(req, res){

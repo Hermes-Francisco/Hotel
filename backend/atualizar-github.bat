@@ -2,5 +2,6 @@
 cls
 title atualizando projeto Hotel no meu gitHub
 git add .
-git commit -m "update %date%"
+set /p %mensagem%
+git commit -m "%mensagem% - %date%"
 git push

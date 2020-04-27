@@ -10,14 +10,15 @@ routes.get('/', (req, res)=> {
 	return res.json({resposta: true});	
 });
 
+routes.get('/sessions', SessionController.index);
+routes.get('/sessions/:email', SessionController.show);
 routes.post('/sessions', SessionController.store);
 
+routes.get('/hoteis/:municipio', HotelController.index);
+//routes.get('/hoteis', HotelController.show);
 routes.post('/hoteis', HotelController.store);
-
-routes.get('/hoteis', HotelController.index);
-
 routes.put('/hoteis', HotelController.update);
 
-routes.get('/sessions', SessionController.index);
+//index, show, update, store, destroy
 
 export default routes;
