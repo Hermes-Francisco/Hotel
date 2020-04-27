@@ -15,6 +15,7 @@ git add .
 git commit -m "%mensagem% - %date%"
 git push
 title ultima atualizacao %date% as %time%.
+goto fim
 :nao
 cls
 title envio cancelado.
@@ -22,3 +23,4 @@ echo envio cancelado.
 pause
 cls
 title .
+:fim
