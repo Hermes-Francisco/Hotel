@@ -12,8 +12,11 @@ goto nao
 cls
 title atualizando...
 git add .
+title atualizando...(1/3)
 git commit -m "%mensagem% - %date%"
+title atualizando...(2/3)
 git push
+title atualizando...(3/3)
 title ultima atualizacao %date% as %time%.
 echo.
 pause
