@@ -15,6 +15,8 @@ git add .
 git commit -m "%mensagem% - %date%"
 git push
 title ultima atualizacao %date% as %time%.
+echo.
+pause
 goto fim
 :nao
 cls
