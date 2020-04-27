@@ -26,3 +26,4 @@ pause
 cls
 title .
 :fim
+cls
