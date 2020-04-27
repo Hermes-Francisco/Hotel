@@ -8,6 +8,7 @@ echo confirmar atualizacao com a mensagem "%mensagem%"? (S/N)
 set /p sn=
 if %sn% == s goto sim
 goto nao
+goto nao
 :sim
 cls
 title atualizando...
