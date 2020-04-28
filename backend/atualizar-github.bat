@@ -1,31 +1,34 @@
 @echo off
 cls
-title atualizando projeto Hotel no meu gitHub
-echo escreva a mensagem do commit.
+title Atualizando projeto Hotel no seu gitHub
+echo Escreva a mensagem do commit.
 set /p mensagem=
 cls
-echo confirmar atualizacao com a mensagem "%mensagem%"? (S/N)
+echo Voce vai mudar os seguintes arquivos:
+echo.
+git status -s
+echo.
+echo Confirmar atualizacao com a mensagem "%mensagem%"? (S/N)
 set /p sn=
 if %sn% == s goto sim
 goto nao
-goto nao
 :sim
 cls
-title atualizando...
+title Atualizando...
 git add .
-title atualizando...(1/3)
+title Atualizando...(1/3)
 git commit -m "%mensagem% - %date%"
-title atualizando...(2/3)
+title Atualizando...(2/3)
 git push
-title atualizando...(3/3)
+title Atualizando...(3/3)
 echo.
 pause
-title ultima atualizacao %date% as %time%.
+title Ultima atualizacao %date% as %time%.
 goto fim
 :nao
 cls
-title envio cancelado.
-echo envio cancelado.
+title Envio cancelado.
+echo Envio cancelado.
 pause
 cls
 title .
