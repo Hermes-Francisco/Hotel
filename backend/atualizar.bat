@@ -9,7 +9,7 @@ echo.
 git status -s
 echo.
 echo Confirmar atualizacao com a mensagem "%mensagem%"? (S/N)
-set /p sn=
+set /p sn= 
 if %sn% == s goto sim
 goto nao
 :sim
