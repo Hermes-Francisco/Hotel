@@ -35,6 +35,8 @@
         $("form").submit(function(e){
             console.log("1");
             e.preventDefault();
+			
+		var data = new Date();
         
         var diaini = $("#inicio-reserva").val().split('-')[0];
 		var mesini = $("#inicio-reserva").val().split('-')[1];
@@ -44,7 +46,11 @@
 		var mesfin = $("#fim-reserva").val().split('-')[1];
 		var anofin = $("#fim-reserva").val().split('-')[2];
 		
-		if(diaini < diafin && mesini <= mesfin && anoini <= anofin)
+		if((mesini >= data.getMonth()) && (diaini >= data.getDay() || anoini > data.getYear())){
+		if((mesini <= mesfin) && (diaini < diafin || anoini < anofin)){
+		     console.log("válido");		
+		}		
+		}
          
         
         });
