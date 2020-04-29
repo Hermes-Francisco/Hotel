@@ -5,14 +5,15 @@
         <link rel='stylesheet' href='estilo-formulario.css' />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		 
     </head>
     <body>
         <form id='formulario' align='center' action=>
             <label for="hotel">Selecione o Hotel</label>
             <select id="hotel" name="hotel">
                 <option value=''>Selecione um hotel</option>
-                <div id='lista'></div>
+                <option value="Abba">Abba</option>
+                <option value="5 stars">5 Stars</option>
+                <option value="Trivago">Trivago</option>
             </select>
             <label for="inicio-reserva">Data de início da reserva</label>
             <input type="date" id='inicio-reserva' class='pequeno' required />
@@ -30,17 +31,22 @@
             <input type="submit" text='Enviar'/>
         </form>
     </body>
-	<script>
-        $.getJSON("localhost:3000/hoteis", function(data) {
-		var hoteis = data.hoteis;
-		var saida = '';
-		for (i = 0; i < hoteis.length; i++) {
-			saida += "<option value='"+hoteis[i].id+"'>"+hoteis[i].nome+"</option>";
-			
-		}
-
-  $('#lista').append(saida);
-});
+    <script>
+        $("form").submit(function(e){
+            console.log("1");
+            e.preventDefault();
+        
+        var diaini = $("#inicio-reserva").val().split('-')[0];
+		var mesini = $("#inicio-reserva").val().split('-')[1];
+		var anoini = $("#inicio-reserva").val().split('-')[2];
+		
+		var diafin = $("#fim-reserva").val().split('-')[0];
+		var mesfin = $("#fim-reserva").val().split('-')[1];
+		var anofin = $("#fim-reserva").val().split('-')[2];
+		
+		if(diaini < diafin && mesini <= mesfin && anoini <= anofin)
+         
+        
+        });
     </script>
-    
 </html>
