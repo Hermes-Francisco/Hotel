@@ -1,10 +1,10 @@
-import Usuario from '../models/Usuario';
+import Reserva from '../models/Reserva';
 
 class SessionController{
 	
 	async index(req, res){
-		let usuario = await Usuario.find();
-		return res.status(200).json(usuario);
+		let reserva = await Reserva.find();
+		return res.status(200).json(reserva);
 	}
 	
 	async show(req, res){
@@ -33,18 +33,6 @@ class SessionController{
 		}
 		
 		return res.status(400).json({erro:"usuário já cadastrado"});
-	}
-	
-	async update(req, res){
-		const { email } = req.body;
-		const { nome } = req.body;
-		
-		
-		let usuario = await Usuario.updateOne({ email },{
-		    nome,
-		});
-				
-		return res.status(200).json(usuario);
 	}
 	
 

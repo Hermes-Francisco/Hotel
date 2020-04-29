@@ -1,4 +1,5 @@
 import Hotel from '../models/Hotel';
+import Usuario from '../models/Usuario';
 
 class HotelController{
 	
@@ -28,8 +29,13 @@ class HotelController{
 		
 		const { nome, uf, municipio, endereco, nAptos, valorDiaria } = req.body;
 		
-		const { user_id } = req.header;
+		const { user_id } = req.headers;
 		
+		try{
+		let usuario = await Usuario.findOne({_id : user_id})
+		}catch(e){
+		return res.status(403).json({"mensagem":"usuario não autorizado"})
+		}
 		console.log(user_id);
 		
 		let hotel = await Hotel.findOne({nome});

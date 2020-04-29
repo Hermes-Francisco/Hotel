@@ -11,8 +11,9 @@ routes.get('/', (req, res)=> {
 });
 
 routes.get('/sessions', SessionController.index);
-routes.get('/sessions/user/:email', SessionController.show);
+routes.get('/sessions/:email', SessionController.show);
 routes.post('/sessions', SessionController.store);
+routes.put('/sessions', SessionController.update);
 
 routes.get('/hoteis/:municipio', HotelController.index);
 //routes.get('/hoteis', HotelController.show);
