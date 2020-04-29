@@ -28,6 +28,10 @@ class HotelController{
 		
 		const { nome, uf, municipio, endereco, nAptos, valorDiaria } = req.body;
 		
+		const { user_id } = req.header;
+		
+		console.log(user_id);
+		
 		let hotel = await Hotel.findOne({nome});
 		
 		if(!hotel){
