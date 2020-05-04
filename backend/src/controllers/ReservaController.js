@@ -1,40 +1,24 @@
 import Reserva from '../models/Reserva';
 
-class SessionController{
+class ReservaController{
 	
 	async index(req, res){
-		let reserva = await Reserva.find();
+		const { responsavel } = req.body;
+		let reserva = await Reserva.find({ Responsavel });
 		return res.status(200).json(reserva);
 	}
 	
-	async show(req, res){
-		
-		const { email } = req.params;
-		let usuario = await Usuario.findOne({email});
-		
-		if(usuario){
-			return res.status(200).json(usuario);
-		}
-		
-		return res.status(404).json({erro:"usuário não encontrado"});
-		
-	}
-	
 	async store(req, res){
-		const { email } = req.body;
-		const { nome } = req.body;
-		//return res.status(200).json(email);
+		const { dataInicial, dataFinal, qtdeHospedes } = req.body;
+		const { hotel_id } = req.params;
+		const { usuario_id } = req.headers;
+		let reserva = await Reserva.create({ responsavel: usuario_id, hotel: hotel_id, dataInicial, dataFinal, qtdeHospedes });
 		
-		let usuario = await Usuario.findOne({email});
+		await reserva.populate('responsavel').populate('hotel').execPopulate();
 		
-		if(!usuario){
-			usuario = await Usuario.create({email, nome});
-			return res.status(200).json(usuario);
-		}
+		return res.json(reserva);
 		
-		return res.status(400).json({erro:"usuário já cadastrado"});
 	}
 	
-
 }
-export default new SessionController;
+export default new ReservaController;

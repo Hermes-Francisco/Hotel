@@ -1,12 +1,11 @@
 import { Schema, model } from 'mongoose';
 
 const ReservaSchema = new Schema({
-	nome: String,
-	uf: String,
-	municipio: String,
-	endereco: String,
-	nAptos: Number,
-	valorDiaria: Number,
+	responsavel: { type: Screma.Types.ObjectId, ref: 'Usuario' },
+	hotel: { type: Screma.Types.ObjectId, ref: 'Hotel' },
+	dataInicial: String,
+	dataFinal: String,
+	qtdeHospedes: Number,
 });
 
 export default model('Reserva', ReservaSchema);
