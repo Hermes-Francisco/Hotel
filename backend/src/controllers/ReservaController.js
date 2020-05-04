@@ -9,9 +9,9 @@ class ReservaController{
 	}
 	
 	async store(req, res){
-		const { dataInicial, dataFinal, qtdeHospedes } = req.body;
+		const { usuario_id, dataInicial, dataFinal, qtdeHospedes } = req.body;
 		const { hotel_id } = req.params;
-		const { usuario_id } = req.headers;
+		
 		let reserva = await Reserva.create({ responsavel: usuario_id, hotel: hotel_id, dataInicial, dataFinal, qtdeHospedes });
 		
 		await reserva.populate('responsavel').populate('hotel').execPopulate();

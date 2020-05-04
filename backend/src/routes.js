@@ -4,6 +4,8 @@ import SessionController from './controllers/SessionController';
 
 import HotelController from './controllers/HotelController';
 
+import ReservaController from './controllers/ReservaController';
+
 const routes = new Router();
 
 routes.get('/', (req, res)=> {
@@ -20,6 +22,7 @@ routes.get('/hoteis/:municipio', HotelController.index);
 routes.post('/hoteis', HotelController.store);
 routes.put('/hoteis', HotelController.update);
 
+routes.post('/hoteis/:hotel_id/reserva', ReservaController.store)
 //index, show, update, store, destroy
 
 export default routes;
