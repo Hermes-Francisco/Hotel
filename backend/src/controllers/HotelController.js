@@ -7,7 +7,7 @@ class HotelController{
 	
 		const { municipio } = req.params;
 		
-		let Hoteis = await Hotel.findMany({ municipio })
+		let Hoteis = await Hotel.find({ municipio })
 		
 		return res.json({Hoteis})
 	}
