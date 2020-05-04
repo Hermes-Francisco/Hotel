@@ -7,10 +7,11 @@ class App{
 	constructor(){
 		this.app = express();
 		
-		mongoose.connect('mongodb+srv://WebHotel2020:98308465@trabalhoweb-hotel-rwlha.mongodb.net/test?retryWrites=true&w=majority',{
-			useNewUrlParser: true,
-			useUnifiedTopology: true,
-		});
+		mongoose.set('useNewUrlParser', true);
+		mongoose.set('useFindAndModify', false);
+		mongoose.set('useCreateIndex', true);
+		mongoose.set('useUnifiedTopology', true);
+		mongoose.connect('mongodb+srv://WebHotel2020:98308465@trabalhoweb-hotel-rwlha.mongodb.net/test?retryWrites=true&w=majority');
 		
 		this.middlewares();
 		this.routes();
