@@ -5,8 +5,8 @@ import Hotel from '../models/Hotel';
 class ReservaController{
 	
 	async index(req, res){
-		const { responsavel } = req.body;
-		let reserva = await Reserva.find({ Responsavel });
+		const { usuario_id } = req.params;
+		let reserva = await Reserva.find({ usuario_id });
 		return res.status(200).json(reserva);
 	}
 	
@@ -15,8 +15,8 @@ class ReservaController{
 		const { hotel_id } = req.params;
 		const { usuario_id } = req.headers;
 		
-		let hotel = Hotel.findOne({ _id: hotel_id });
-		let usuario = Usuario.findOne({ _id: usuario_id });
+		let hotel = Hotel.findOne({ _id: hotel_id }).catch((e)=>{return res.json(e)});
+		let usuario = Usuario.findOne({ _id: usuario_id }).catch((e)=>{return res.json(e)});
 		
 		if(!hotel)return res.status(404).json({mensagem: 'hotel não encontrado'});
 		if(!usuario)return res.status(404).json({mensagem: 'usuario não encontrado'});
