@@ -2,6 +2,7 @@ import express from 'express'; //const express = require('express');
 import routes from './routes'; //const routes = require('./routes');
 import mongoose from 'mongoose'
 import cors from 'cors';
+import * from 'yup';
 
 class App{
 	
