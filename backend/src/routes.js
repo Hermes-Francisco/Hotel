@@ -25,7 +25,7 @@ routes.post('/hoteis', upload.single('imagem'), HotelController.store);
 routes.put('/hoteis', HotelController.update);
 
 routes.post('/hoteis/:hotel_id/reserva', ReservaController.store)
-routes.get('/hoteis/:usuario_id/reserva', ReservaController.index)
+routes.get('/sessions/:usuario_id/reservas', ReservaController.index)
 //index, show, update, store, destroy
 
 export default routes;

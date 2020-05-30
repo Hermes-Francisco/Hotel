@@ -6,7 +6,7 @@ class ReservaController{
 	
 	async index(req, res){
 		const { usuario_id } = req.params;
-		let reserva = await Reserva.find({ usuario_id });
+		let reserva = await Reserva.find({ responsavel : {_id: usuario_id }}).catch((e)=>{});
 		return res.status(200).json(reserva);
 	}
 	
