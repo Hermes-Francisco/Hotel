@@ -22,6 +22,10 @@ class App{
 	middlewares(){
 		this.app.use(express.json());
 		this.app.use(cors());
+		/*this.app.use(
+			'/imagens',
+			express.static(path.resolve(__dirname, '..', 'uploads'))
+		)*/
 	}
 	
 	routes(){

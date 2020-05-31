@@ -21,14 +21,13 @@ class SessionController{
 	}
 	
 	async store(req, res){
-		const { email } = req.body;
-		const { nome } = req.body;
+		const { email, nome, tipo } = req.body;
 		//return res.status(200).json(email);
 		
 		let usuario = await Usuario.findOne({email});
 		
 		if(!usuario){
-			usuario = await Usuario.create({email, nome});
+			usuario = await Usuario.create({email, nome, tipo});
 			return res.status(200).json(usuario);
 		}
 		
@@ -36,12 +35,14 @@ class SessionController{
 	}
 	
 	async update(req, res){
-		const { email } = req.body;
-		const { nome } = req.body;
+		const { id } = req.params;
+		const { email, nome, tipo } = req.body;
 		
 		
-		let usuario = await Usuario.updateOne({ email },{
-		    nome,
+		let usuario = await Usuario.updateOne({ id },{
+			nome,
+			email,
+			tipo,
 		});
 				
 		return res.status(200).json(usuario);

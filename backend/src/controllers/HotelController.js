@@ -30,6 +30,8 @@ class HotelController{
 		const { nome, uf, municipio, endereco, nAptos, valorDiaria } = req.body;
 		
 		const { user_id } = req.headers;
+
+		const nomeImagem = req.file.filename;
 		
 		try{
 		let usuario = await Usuario.findOne({_id : user_id})
@@ -48,6 +50,7 @@ class HotelController{
 				endereco,
 				nAptos,
 				valorDiaria,
+				nomeImagem,
 			});
 			return res.status(200).json(hotel);
 		}

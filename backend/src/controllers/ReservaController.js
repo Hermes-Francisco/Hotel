@@ -14,6 +14,11 @@ class ReservaController{
 		const { dataInicial, dataFinal, qtdeHospedes } = req.body;
 		const { hotel_id } = req.params;
 		const { usuario_id } = req.headers;
+		/*const Schema = yup.object().shape({
+			dataInicial : yup.date().required('data inicial inválida'),
+			dataFinal : yup.date().required('data final inválida'),
+			qtdeHospedes : yup.number().required().min(1, 'deve haver pelo menos um hospede')
+		})*/
 		
 		let hotel = Hotel.findOne({ _id: hotel_id }).catch((e)=>{return res.json(e)});
 		let usuario = Usuario.findOne({ _id: usuario_id }).catch((e)=>{return res.json(e)});
