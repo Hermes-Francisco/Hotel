@@ -23,8 +23,10 @@ routes.get('/hoteis/:municipio', HotelController.index);
 //routes.get('/hoteis/:hotel_id', HotelController.show);
 routes.post('/hoteis', upload.single('imagem'), HotelController.store);
 routes.put('/hoteis', HotelController.update);
+routes.delete('/hoteis', HotelController.destroy);
 
 routes.post('/hoteis/:hotel_id/reserva', ReservaController.store)
+routes.delete('/hoteis/:usuario_id/reserva', ReservaController.destroy)
 routes.get('/sessions/:usuario_id/reservas', ReservaController.index)
 //index, show, update, store, destroy
 

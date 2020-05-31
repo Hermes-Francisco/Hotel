@@ -34,10 +34,12 @@ class HotelController{
 		const nomeImagem = req.file.filename;
 		
 		try{
-		let usuario = await Usuario.findOne({_id : user_id})
+		let usuario = await Usuario.findOne({_id : user_id});
+		if(usuario.tipo != "gerente")return res.status(403).json({"mensagem":"usuario não aut"});
 		}catch(e){
 		return res.status(403).json({"mensagem":"usuario não autorizado"})
 		}
+		
 		console.log(user_id);
 		
 		let hotel = await Hotel.findOne({nome});
@@ -60,7 +62,15 @@ class HotelController{
 	
 	async update(req, res){
 		
+		const { user_id } = req.headers;
 		const { hotel_id, nome, uf, municipio, endereco, nAptos, valorDiaria } = req.body;
+
+		try{
+			let usuario = await Usuario.findOne({_id : user_id});
+			if(usuario.tipo != "gerente")return res.status(403).json({"mensagem":"usuario não autorizado"});
+			}catch(e){
+			return res.status(403).json({"mensagem":"usuario não autorizado"})
+		}
 		
 		let hotel = await Hotel.updateOne({ _id : hotel_id },{
 			nome,
@@ -72,6 +82,20 @@ class HotelController{
 		});
 		
 		return res.status(200).json(hotel);
+	}
+
+	async destroy(req, res){
+		const { user_id } = req.headers;
+		const { hotel_id } = req.body;
+
+		try{
+			let usuario = await Usuario.findOne({_id : user_id});
+			if(usuario.tipo != "gerente")return res.status(403).json({"mensagem":"usuario não autorizado"});
+			}catch(e){
+			return res.status(403).json({"mensagem":"usuario não autorizado"})
+		}
+		await Hotel.deleteOne({ _id : hotel_id });
+		res.json({deleted})		
 	}
 
 }
